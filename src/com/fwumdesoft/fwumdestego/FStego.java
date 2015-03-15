@@ -1,11 +1,11 @@
-package com.fwumdesoft.fwumdephotos;
+package com.fwumdesoft.fwumdestego;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 
-public final class FwumDePhotos
+public final class FStego
 {
-	private FwumDePhotos() {}
+	private FStego() {}
 	public static BufferedImage sanitize(BufferedImage img)
 	{
 		BufferedImage sanitized;
@@ -34,6 +34,7 @@ public final class FwumDePhotos
 	
 	public static int getMaxCharacters(BufferedImage img)
 	{
+		//The maximum characters is the number of pixels times 3 (red, green, blue) over 16 (the number of bits per character)
 		return img.getWidth() * img.getHeight() * 3 / 16;
 	}
 	
