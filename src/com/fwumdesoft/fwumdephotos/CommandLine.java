@@ -13,5 +13,6 @@ public class CommandLine
 		BufferedImage image = ImageIO.read(new File("before.png"));
 		image = FwumDePhotos.write(image, "An aweseome new program!");
 		System.out.println(FwumDePhotos.read(image));
+		ImageIO.write(image, "png", new File("after.png"));
 	}
 }

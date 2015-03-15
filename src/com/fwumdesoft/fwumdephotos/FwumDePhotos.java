@@ -81,31 +81,31 @@ public final class FwumDePhotos
 		String text = "";
 		int x, y;
 		Color original, encoded;
-		for(int i = 0; i < img.getWidth() * img.getHeight(); i += 16)
+		boolean[] flags = new boolean[img.getWidth() * img.getHeight()];
+		for(int i = 0; i < img.getWidth() * img.getHeight(); i += 3)
+		{
+			x = ((i) / 3) % img.getWidth();
+			y = ((i) / 3) / img.getHeight();
+			original = new Color(orig.getRGB(x, y));
+			encoded = new Color(img.getRGB(x, y));
+			flags[i] = original.getRed() != encoded.getRed();
+			if(i + 1 < flags.length)
+				flags[i + 1] = original.getGreen() != encoded.getGreen();
+			if(i + 2 < flags.length)
+				flags[i + 2] = original.getBlue() != encoded.getBlue();
+		}
+		for(int i = 0; i < flags.length; i += 16)
 		{
 			int next = 0;
-			boolean[] flags = new boolean[16];
-			for(int j = 0; j < flags.length; j += 3)
+			for(int j = 0; j < 16 && j + i < flags.length; j ++)
 			{
-				x = ((i + j) / 3) % img.getWidth();
-				y = ((i + j) / 3) / img.getHeight();
-				original = new Color(orig.getRGB(x, y));
-				encoded = new Color(img.getRGB(x, y));
-				flags[j] = original.getRed() != encoded.getRed();
-				if(j + 1 < flags.length)
-					flags[j + 1] = original.getGreen() != encoded.getGreen();
-				if(j + 2 < flags.length)
-					flags[j + 2] = original.getBlue() != encoded.getBlue();
-			}
-			for(int j = 0; j < flags.length; j++)
-			{
-				next += flags[j] ? (int)Math.pow(2, 15 - j) : 0;
+				next += flags[i + j] ? Math.pow(2, 15 - j) : 0;
 			}
 			if((char)next != '\0')
 				text += (char)next;
 			else
 				break;
 		}
-		return text.substring(0, text.length() - 1);
+		return text;
 	}
 }
