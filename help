@@ -1,0 +1,11 @@
+fstego(.bat/.sh) [command] [args0] [args1] ...
+commands:
+help:				Shows this message
+
+encode:	Purpose:	Writes message to new image
+		[args0] 	Path to initial image
+		[args1]		Path to text file to encode in the image
+		
+decode: Purpose:	Reads message from image
+		[args0]		Path to encoded image
+		[args1]		Output file to write text to
