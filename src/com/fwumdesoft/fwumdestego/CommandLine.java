@@ -30,9 +30,8 @@ public class CommandLine
 			{
 				System.out.println("Unexpected filesystem error occured.");
 			}
-			return;
 		}
-		if(args[0].equals("encode"))
+		else if(args[0].equals("encode"))
 			encode(args);
 		else if(args[0].equals("decode"))
 			decode(args);
