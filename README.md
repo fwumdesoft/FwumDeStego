@@ -1,4 +1,4 @@
-# FwumDeStego
+# BasicStego
 A steganography tool for images that has little to no visible effect. <br>
 ## What is steganography?
 Steganography is the process of hiding data in plain sight. <br>
