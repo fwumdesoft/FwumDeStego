@@ -1,4 +1,4 @@
-package com.fwumdesoft.fwumdestego;
+package com.ryanisaacg.basicstego;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

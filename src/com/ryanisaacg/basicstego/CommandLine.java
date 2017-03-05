@@ -1,4 +1,4 @@
-package com.fwumdesoft.fwumdestego;
+package com.ryanisaacg.basicstego;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -76,8 +76,10 @@ public class CommandLine
 		}
 		try
 		{
-			ImageIO.write(image, ".png", new File("output.png"));
-			System.out.println("output.png has been created.");
+			File output = new File("output.png");
+			output.createNewFile();
+			ImageIO.write(image, "png", output);
+			System.out.println("output.png has been created at " + output.getAbsolutePath());
 		} catch (IOException e)
 		{
 			System.out.println("Unexpected error occured while writing to output file.");
